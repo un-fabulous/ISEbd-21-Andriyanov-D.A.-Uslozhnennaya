@@ -29,21 +29,20 @@
         private void InitializeComponent()
         {
             this.pictureBoxParking = new System.Windows.Forms.PictureBox();
-            this.groupBoxTakingCar = new System.Windows.Forms.GroupBox();
+            this.groupBoxTakeCar = new System.Windows.Forms.GroupBox();
+            this.buttonUnparkingCars = new System.Windows.Forms.Button();
             this.buttonTakeCar = new System.Windows.Forms.Button();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.labelPlace = new System.Windows.Forms.Label();
             this.buttonSetCar = new System.Windows.Forms.Button();
             this.buttonSetSamosval = new System.Windows.Forms.Button();
-            this.labelCompare = new System.Windows.Forms.Label();
-            this.maskedTextBoxCompare = new System.Windows.Forms.MaskedTextBox();
-            this.checkBoxMore = new System.Windows.Forms.CheckBox();
-            this.checkBoxLess = new System.Windows.Forms.CheckBox();
-            this.buttonCompare = new System.Windows.Forms.Button();
-            this.groupBoxPlaces = new System.Windows.Forms.GroupBox();
+            this.textBoxNewLevelName = new System.Windows.Forms.TextBox();
+            this.labelParking = new System.Windows.Forms.Label();
+            this.buttonParking = new System.Windows.Forms.Button();
+            this.listBoxParkings = new System.Windows.Forms.ListBox();
+            this.buttonDeleteParking = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
-            this.groupBoxTakingCar.SuspendLayout();
-            this.groupBoxPlaces.SuspendLayout();
+            this.groupBoxTakeCar.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxParking
@@ -51,29 +50,40 @@
             this.pictureBoxParking.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBoxParking.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxParking.Name = "pictureBoxParking";
-            this.pictureBoxParking.Size = new System.Drawing.Size(726, 579);
+            this.pictureBoxParking.Size = new System.Drawing.Size(726, 447);
             this.pictureBoxParking.TabIndex = 0;
             this.pictureBoxParking.TabStop = false;
             // 
-            // groupBoxTakingCar
+            // groupBoxTakeCar
             // 
-            this.groupBoxTakingCar.Controls.Add(this.buttonTakeCar);
-            this.groupBoxTakingCar.Controls.Add(this.maskedTextBox);
-            this.groupBoxTakingCar.Controls.Add(this.labelPlace);
-            this.groupBoxTakingCar.Location = new System.Drawing.Point(741, 111);
-            this.groupBoxTakingCar.Name = "groupBoxTakingCar";
-            this.groupBoxTakingCar.Size = new System.Drawing.Size(110, 93);
-            this.groupBoxTakingCar.TabIndex = 3;
-            this.groupBoxTakingCar.TabStop = false;
-            this.groupBoxTakingCar.Text = "Забрать машину";
+            this.groupBoxTakeCar.Controls.Add(this.buttonUnparkingCars);
+            this.groupBoxTakeCar.Controls.Add(this.buttonTakeCar);
+            this.groupBoxTakeCar.Controls.Add(this.maskedTextBox);
+            this.groupBoxTakeCar.Controls.Add(this.labelPlace);
+            this.groupBoxTakeCar.Location = new System.Drawing.Point(741, 300);
+            this.groupBoxTakeCar.Name = "groupBoxTakeCar";
+            this.groupBoxTakeCar.Size = new System.Drawing.Size(110, 137);
+            this.groupBoxTakeCar.TabIndex = 3;
+            this.groupBoxTakeCar.TabStop = false;
+            this.groupBoxTakeCar.Text = "Забрать машину";
+            // 
+            // buttonUnparkingCars
+            // 
+            this.buttonUnparkingCars.Location = new System.Drawing.Point(12, 104);
+            this.buttonUnparkingCars.Name = "buttonUnparkingCars";
+            this.buttonUnparkingCars.Size = new System.Drawing.Size(93, 23);
+            this.buttonUnparkingCars.TabIndex = 12;
+            this.buttonUnparkingCars.Text = "Забрать ";
+            this.buttonUnparkingCars.UseVisualStyleBackColor = true;
+            this.buttonUnparkingCars.Click += new System.EventHandler(this.ButtonUnparkingCars_Click);
             // 
             // buttonTakeCar
             // 
-            this.buttonTakeCar.Location = new System.Drawing.Point(10, 64);
+            this.buttonTakeCar.Location = new System.Drawing.Point(11, 64);
             this.buttonTakeCar.Name = "buttonTakeCar";
-            this.buttonTakeCar.Size = new System.Drawing.Size(75, 23);
+            this.buttonTakeCar.Size = new System.Drawing.Size(94, 34);
             this.buttonTakeCar.TabIndex = 4;
-            this.buttonTakeCar.Text = "Забрать";
+            this.buttonTakeCar.Text = "Добавить в стек";
             this.buttonTakeCar.UseVisualStyleBackColor = true;
             this.buttonTakeCar.Click += new System.EventHandler(this.buttonTakeCar_Click);
             // 
@@ -95,7 +105,7 @@
             // 
             // buttonSetCar
             // 
-            this.buttonSetCar.Location = new System.Drawing.Point(741, 12);
+            this.buttonSetCar.Location = new System.Drawing.Point(741, 216);
             this.buttonSetCar.Name = "buttonSetCar";
             this.buttonSetCar.Size = new System.Drawing.Size(110, 34);
             this.buttonSetCar.TabIndex = 5;
@@ -105,7 +115,7 @@
             // 
             // buttonSetSamosval
             // 
-            this.buttonSetSamosval.Location = new System.Drawing.Point(741, 52);
+            this.buttonSetSamosval.Location = new System.Drawing.Point(741, 256);
             this.buttonSetSamosval.Name = "buttonSetSamosval";
             this.buttonSetSamosval.Size = new System.Drawing.Size(110, 38);
             this.buttonSetSamosval.TabIndex = 6;
@@ -113,99 +123,89 @@
             this.buttonSetSamosval.UseVisualStyleBackColor = true;
             this.buttonSetSamosval.Click += new System.EventHandler(this.buttonSetSamosval_Click);
             // 
-            // labelCompare
+            // textBoxNewLevelName
             // 
-            this.labelCompare.Location = new System.Drawing.Point(0, 44);
-            this.labelCompare.Name = "labelCompare";
-            this.labelCompare.Size = new System.Drawing.Size(125, 20);
-            this.labelCompare.TabIndex = 8;
-            this.labelCompare.Text = "Число для сравнения:";
+            this.textBoxNewLevelName.Location = new System.Drawing.Point(740, 34);
+            this.textBoxNewLevelName.Name = "textBoxNewLevelName";
+            this.textBoxNewLevelName.Size = new System.Drawing.Size(110, 20);
+            this.textBoxNewLevelName.TabIndex = 7;
             // 
-            // maskedTextBoxCompare
+            // labelParking
             // 
-            this.maskedTextBoxCompare.Location = new System.Drawing.Point(30, 67);
-            this.maskedTextBoxCompare.Name = "maskedTextBoxCompare";
-            this.maskedTextBoxCompare.Size = new System.Drawing.Size(72, 20);
-            this.maskedTextBoxCompare.TabIndex = 11;
+            this.labelParking.AutoSize = true;
+            this.labelParking.Location = new System.Drawing.Point(761, 18);
+            this.labelParking.Name = "labelParking";
+            this.labelParking.Size = new System.Drawing.Size(60, 13);
+            this.labelParking.TabIndex = 8;
+            this.labelParking.Text = "Парковки:";
             // 
-            // checkBoxMore
+            // buttonParking
             // 
-            this.checkBoxMore.Location = new System.Drawing.Point(0, 90);
-            this.checkBoxMore.Name = "checkBoxMore";
-            this.checkBoxMore.Size = new System.Drawing.Size(67, 17);
-            this.checkBoxMore.TabIndex = 12;
-            this.checkBoxMore.Text = "Больше";
-            this.checkBoxMore.UseVisualStyleBackColor = true;
+            this.buttonParking.Location = new System.Drawing.Point(740, 60);
+            this.buttonParking.Name = "buttonParking";
+            this.buttonParking.Size = new System.Drawing.Size(119, 20);
+            this.buttonParking.TabIndex = 9;
+            this.buttonParking.Text = "Добавить парковку";
+            this.buttonParking.UseVisualStyleBackColor = true;
+            this.buttonParking.Click += new System.EventHandler(this.buttonAddParking_Click);
             // 
-            // checkBoxLess
+            // listBoxParkings
             // 
-            this.checkBoxLess.AutoSize = true;
-            this.checkBoxLess.Location = new System.Drawing.Point(59, 90);
-            this.checkBoxLess.Name = "checkBoxLess";
-            this.checkBoxLess.Size = new System.Drawing.Size(67, 17);
-            this.checkBoxLess.TabIndex = 13;
-            this.checkBoxLess.Text = "Меньше";
-            this.checkBoxLess.UseVisualStyleBackColor = true;
+            this.listBoxParkings.FormattingEnabled = true;
+            this.listBoxParkings.Location = new System.Drawing.Point(740, 86);
+            this.listBoxParkings.Name = "listBoxParkings";
+            this.listBoxParkings.Size = new System.Drawing.Size(110, 95);
+            this.listBoxParkings.TabIndex = 10;
+            this.listBoxParkings.Click += new System.EventHandler(this.listBoxParkings_SelectedIndexChanged);
             // 
-            // buttonCompare
+            // buttonDeleteParking
             // 
-            this.buttonCompare.Location = new System.Drawing.Point(13, 113);
-            this.buttonCompare.Name = "buttonCompare";
-            this.buttonCompare.Size = new System.Drawing.Size(89, 44);
-            this.buttonCompare.TabIndex = 14;
-            this.buttonCompare.Text = "Сравнить количество заполенных мест";
-            this.buttonCompare.UseVisualStyleBackColor = true;
-            this.buttonCompare.Click += new System.EventHandler(this.ButtonCompare_Click);
-            // 
-            // groupBoxPlaces
-            // 
-            this.groupBoxPlaces.Controls.Add(this.labelCompare);
-            this.groupBoxPlaces.Controls.Add(this.buttonCompare);
-            this.groupBoxPlaces.Controls.Add(this.maskedTextBoxCompare);
-            this.groupBoxPlaces.Controls.Add(this.checkBoxLess);
-            this.groupBoxPlaces.Controls.Add(this.checkBoxMore);
-            this.groupBoxPlaces.Location = new System.Drawing.Point(732, 399);
-            this.groupBoxPlaces.Name = "groupBoxPlaces";
-            this.groupBoxPlaces.Size = new System.Drawing.Size(126, 168);
-            this.groupBoxPlaces.TabIndex = 15;
-            this.groupBoxPlaces.TabStop = false;
-            this.groupBoxPlaces.Text = "Количество занятых мест";
+            this.buttonDeleteParking.Location = new System.Drawing.Point(740, 187);
+            this.buttonDeleteParking.Name = "buttonDeleteParking";
+            this.buttonDeleteParking.Size = new System.Drawing.Size(119, 23);
+            this.buttonDeleteParking.TabIndex = 11;
+            this.buttonDeleteParking.Text = "Удалить парковку";
+            this.buttonDeleteParking.UseVisualStyleBackColor = true;
+            this.buttonDeleteParking.Click += new System.EventHandler(this.buttonDeleteParking_Click);
             // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(863, 579);
-            this.Controls.Add(this.groupBoxPlaces);
+            this.ClientSize = new System.Drawing.Size(863, 447);
+            this.Controls.Add(this.buttonDeleteParking);
+            this.Controls.Add(this.listBoxParkings);
+            this.Controls.Add(this.buttonParking);
+            this.Controls.Add(this.labelParking);
+            this.Controls.Add(this.textBoxNewLevelName);
             this.Controls.Add(this.buttonSetSamosval);
             this.Controls.Add(this.buttonSetCar);
-            this.Controls.Add(this.groupBoxTakingCar);
+            this.Controls.Add(this.groupBoxTakeCar);
             this.Controls.Add(this.pictureBoxParking);
             this.Name = "FormParking";
             this.Text = "Гараж";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).EndInit();
-            this.groupBoxTakingCar.ResumeLayout(false);
-            this.groupBoxTakingCar.PerformLayout();
-            this.groupBoxPlaces.ResumeLayout(false);
-            this.groupBoxPlaces.PerformLayout();
+            this.groupBoxTakeCar.ResumeLayout(false);
+            this.groupBoxTakeCar.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxParking;
-        private System.Windows.Forms.GroupBox groupBoxTakingCar;
+        private System.Windows.Forms.GroupBox groupBoxTakeCar;
         private System.Windows.Forms.Button buttonTakeCar;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Label labelPlace;
         private System.Windows.Forms.Button buttonSetCar;
         private System.Windows.Forms.Button buttonSetSamosval;
-        private System.Windows.Forms.Label labelCompare;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxCompare;
-        private System.Windows.Forms.CheckBox checkBoxMore;
-        private System.Windows.Forms.CheckBox checkBoxLess;
-        private System.Windows.Forms.Button buttonCompare;
-        private System.Windows.Forms.GroupBox groupBoxPlaces;
+        private System.Windows.Forms.Button buttonUnparkingCars;
+        private System.Windows.Forms.TextBox textBoxNewLevelName;
+        private System.Windows.Forms.Label labelParking;
+        private System.Windows.Forms.Button buttonParking;
+        private System.Windows.Forms.ListBox listBoxParkings;
+        private System.Windows.Forms.Button buttonDeleteParking;
     }
 }

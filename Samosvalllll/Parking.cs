@@ -10,10 +10,16 @@ namespace Samosvalllll
 {
     public class Parking<T, P> where T : class, ITransport where P : class, IDopElement
     {
-        private readonly T[] _places;
+        private readonly List<T> _places;
+
+        private readonly int _maxCount;
+
         private readonly int pictureWidth;
+
         private readonly int pictureHeight;
+
         private readonly int _placeSizeWidth = 210;
+
         private readonly int _placeSizeHeight = 80;
 
 
@@ -21,67 +27,41 @@ namespace Samosvalllll
         {
             int width = picWidth / _placeSizeWidth;
             int height = picHeight / _placeSizeHeight;
-            _places = new T[width * height];
+            _maxCount = width * height;
             pictureWidth = picWidth;
             pictureHeight = picHeight;
+            _places = new List<T>();
         }
 
 
         public static bool operator +(Parking<T, P> p, T car)
         {
-            for (int i = 0; i < p._places.Length; i++)
+            if (p._places.Count >= p._maxCount)
             {
-                if (p._places[i] == null)
-                {
-                    car.SetPosition(p._placeSizeWidth * (int)(i / (int)(p.pictureHeight / p._placeSizeHeight)) + 20, 35 + p._placeSizeHeight * (int)(i % (int)(p.pictureHeight / p._placeSizeHeight)), p.pictureWidth, p.pictureHeight);
-                    p._places[i] = car;
-                    return true;
-
-                }
+                return false;
             }
-            return false;
+            p._places.Add(car);
+            return true;
         }
         public static T operator -(Parking<T, P> p, int index)
         {
-            if ((index < p._places.Length) && (index >= 0))
+            if (index < -1 || index > p._places.Count)
             {
-                T car = p._places[index];
-                p._places[index] = null;
-                return car;
+                return null;
             }
-            return null;
+            T car = p._places[index];
+            p._places.RemoveAt(index);
+            return car;
         }
-
-        public static bool operator >(Parking<T, P> с, int i)
-        {
-            return с.Compare() > i;
-        }
-
-        public static bool operator <(Parking<T, P> с, int i)
-        {
-            return с.Compare() < i;
-        }
-
-        private int Compare()
-        {
-            int cnt = 0;
-            for (int i = 0; i < _places.Length; ++i)
-            {
-                if (_places[i] != null)
-                {
-                    cnt++;
-                }
-            }
-            return cnt;
-        }
-
 
         public void Draw(Graphics g)
         {
             DrawMarking(g);
-            for (int i = 0; i < _places.Length; i++)
+            for (int i = 0; i < _places.Count; ++i)
             {
-                _places[i]?.DrawTransport(g);
+                _places[i].SetPosition(13 + i / 5 * _placeSizeWidth + 5, i % 5 *
+                _placeSizeHeight + 33, pictureWidth, pictureHeight);
+                _places[i].DrawTransport(g);
             }
         }
 
@@ -100,5 +80,17 @@ namespace Samosvalllll
             }
 
         }
+
+        public T this[int ind]
+        {
+            get
+            {
+                if (ind >= 0 && ind < _maxCount)
+                {
+                    return _places[ind];
+                }
+                return null;
+            }
+        }   
     }
 }
