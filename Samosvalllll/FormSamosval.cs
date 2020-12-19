@@ -10,14 +10,22 @@ using System.Windows.Forms;
 
 namespace Samosvalllll
 {
-    public partial class FormCar : Form
+    public partial class FormSamosval : Form
     {
-        private Gruzovik car;
+        private ITransport car;
 
-        public FormCar()
+        public FormSamosval()
         {
             InitializeComponent();
-            comboBoxWheels.Items.AddRange(new string[] { "2 пары колес", "3 пары колес", "4 пары колес" });
+            comboBoxWheels.Items.AddRange(new string[] { "2 пары колес", "3 пары колес", "4 пары колес" });                                                                                                                                 // buttonCreatePlane.Enabled = false;
+                                                                                                                                                                                                                                            // buttonCreateWaterPlane.Enabled = false;
+
+        }
+
+        public void SetCar(ITransport car)
+        {
+            this.car = car;
+            Draw();
         }
 
         private void Draw()
@@ -41,6 +49,7 @@ namespace Samosvalllll
         {
 
             Random rnd = new Random();
+
             int numberOfWheels = (comboBoxWheels.SelectedIndex + 2);
 
             int ornamentwheel = (checkBoxTriangle.Checked && !checkBoxRectangle.Checked && !checkBoxCircle.Checked) ? 1 :
@@ -59,7 +68,7 @@ namespace Samosvalllll
             switch (name)
             {
                 case "buttonUp":
-                   car.MoveTransport(Direction.Up);
+                    car.MoveTransport(Direction.Up);
                     break;
                 case "buttonDown":
                     car.MoveTransport(Direction.Down);
@@ -68,11 +77,10 @@ namespace Samosvalllll
                     car.MoveTransport(Direction.Left);
                     break;
                 case "buttonRight":
-                   car.MoveTransport(Direction.Right);
+                    car.MoveTransport(Direction.Right);
                     break;
             }
             Draw();
         }
-
     }
 }

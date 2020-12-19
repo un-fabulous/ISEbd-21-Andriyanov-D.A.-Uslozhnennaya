@@ -40,11 +40,14 @@ namespace Samosvalllll
                     DrawFourWheels(g, _startPosX, _startPosY);
                     break;
             }
+
         }
 
         private void DrawTwoWheels(Graphics g, float _startPosX, float _startPosY)
         {
             Brush wheel = new SolidBrush(MainColor);
+
+
             g.FillEllipse(wheel, _startPosX + 2, _startPosY + 15, 25, 25);
             g.FillEllipse(wheel, _startPosX + 100, _startPosY + 15, 25, 25);
 
@@ -63,11 +66,14 @@ namespace Samosvalllll
             PointF b4 = new PointF(_startPosX + 106, _startPosY + 25);
             PointF[] emblemrc2 = { b1, b2, b3, b4 };
             g.FillPolygon(emblem, emblemrc2);
+
+
         }
 
         private void DrawThreeWheels(Graphics g, float _startPosX, float _startPosY)
         {
             Brush wheel = new SolidBrush(MainColor);
+
             DrawTwoWheels(g, _startPosX, _startPosY);
             g.FillEllipse(wheel, _startPosX + 30, _startPosY + 15, 25, 25);
 
@@ -78,12 +84,14 @@ namespace Samosvalllll
             PointF c4 = new PointF(_startPosX + 36, _startPosY + 25);
             PointF[] emblemrc3 = { c1, c2, c3, c4 };
             g.FillPolygon(emblem, emblemrc3);
+
         }
 
 
         private void DrawFourWheels(Graphics g, float _startPosX, float _startPosY)
         {
             Brush wheel = new SolidBrush(MainColor);
+
             DrawThreeWheels(g, _startPosX, _startPosY);
             g.FillEllipse(wheel, _startPosX + 65, _startPosY + 15, 25, 25);
 
@@ -95,6 +103,8 @@ namespace Samosvalllll
             PointF d4 = new PointF(_startPosX + 71, _startPosY + 25);
             PointF[] emblemrc4 = { d1, d2, d3, d4 };
             g.FillPolygon(emblem, emblemrc4);
+
         }
+
     }
 }

@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Samosvalllll
 {
     enum ElementsEnum
-    {     
+    {
+        
         Two = 2,
         Three = 3,
         Four = 4,
@@ -15,5 +16,6 @@ namespace Samosvalllll
         Triangle,
         Rectangle,
         Ellipse,
+
     }
 }
