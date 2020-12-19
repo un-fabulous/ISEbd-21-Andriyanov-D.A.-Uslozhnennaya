@@ -16,7 +16,7 @@ namespace Samosvalllll
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormSamosval());
+            Application.Run(new FormCar());
         }
     }
 }
