@@ -10,28 +10,46 @@ using System.Windows.Forms;
 
 namespace Samosvalllll
 {
-    public partial class FormSamosval : Form
+    public partial class FormCar : Form
     {
-        private Samosval samos;
-        public FormSamosval()
+        private Gruzovik car;
+
+        public FormCar()
         {
             InitializeComponent();
             comboBoxWheels.Items.AddRange(new string[] { "2 пары колес", "3 пары колес", "4 пары колес" });
         }
+
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxSamosval.Width, pictureBoxSamosval.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            samos.DrawTransport(gr);
+            car.DrawTransport(gr);
             pictureBoxSamosval.Image = bmp;
 
         }
 
-        private void ButtonCreate_Click(object sender, EventArgs e)
+        private void buttonCreateGruz_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            samos = new Samosval(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Gray, Color.Red, true, true, (comboBoxWheels.SelectedIndex + 2));
-            samos.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxSamosval.Width, pictureBoxSamosval.Height);
+            car = new Gruzovik(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Gray);
+            car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxSamosval.Width, pictureBoxSamosval.Height);
+            Draw();
+        }
+
+        private void ButtonCreateSamosval_Click(object sender, EventArgs e)
+        {
+
+            Random rnd = new Random();
+            int numberOfWheels = (comboBoxWheels.SelectedIndex + 2);
+
+            int ornamentwheel = (checkBoxTriangle.Checked && !checkBoxRectangle.Checked && !checkBoxCircle.Checked) ? 1 :
+                                (!checkBoxTriangle.Checked && checkBoxRectangle.Checked && !checkBoxCircle.Checked) ? 2 :
+                                (!checkBoxTriangle.Checked && !checkBoxRectangle.Checked && checkBoxCircle.Checked ? 3 : 0);
+            
+        
+            car = new Samosval(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Gray, Color.Red, true, true, numberOfWheels, ornamentwheel);
+            car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxSamosval.Width, pictureBoxSamosval.Height);
             Draw();
         }
 
@@ -41,19 +59,20 @@ namespace Samosvalllll
             switch (name)
             {
                 case "buttonUp":
-                    samos.MoveTransport(Direction.Up);
+                   car.MoveTransport(Direction.Up);
                     break;
                 case "buttonDown":
-                    samos.MoveTransport(Direction.Down);
+                    car.MoveTransport(Direction.Down);
                     break;
                 case "buttonLeft":
-                    samos.MoveTransport(Direction.Left);
+                    car.MoveTransport(Direction.Left);
                     break;
                 case "buttonRight":
-                   samos.MoveTransport(Direction.Right);
+                   car.MoveTransport(Direction.Right);
                     break;
             }
             Draw();
         }
+
     }
 }

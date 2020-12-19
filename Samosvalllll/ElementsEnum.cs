@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace Samosvalllll
 {
-    enum WheelsEnum
-    {
+    enum ElementsEnum
+    {     
         Two = 2,
         Three = 3,
-        Four = 4
+        Four = 4,
+
+        Triangle,
+        Rectangle,
+        Ellipse,
     }
 }
