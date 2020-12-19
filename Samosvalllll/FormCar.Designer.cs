@@ -237,4 +237,3 @@
         private System.Windows.Forms.Button buttonCreateSamosval;
     }
 }
-

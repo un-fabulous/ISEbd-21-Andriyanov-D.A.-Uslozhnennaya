@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Samosvalllll
 {
-    public class Gruzovik : Vehicle
+	public class Gruzovik : Vehicle
 	{
 		protected readonly int carWidth = 110;
 
@@ -92,7 +92,6 @@ namespace Samosvalllll
 			g.FillEllipse(circ, _startPosX + 2, _startPosY + 15, 25, 25);
 			
 			g.FillEllipse(circ, _startPosX + 100, _startPosY + 15, 25, 25);
-		}
-			
+		}	
 	}
 }

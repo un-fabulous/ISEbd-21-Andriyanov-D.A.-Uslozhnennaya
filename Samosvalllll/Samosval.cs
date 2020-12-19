@@ -47,9 +47,7 @@ namespace Samosvalllll
         }
 
         public override void DrawTransport(Graphics g)
-        {
-           
-
+        {    
             if (Support)
             {
                 Brush support = new SolidBrush(DopColor);

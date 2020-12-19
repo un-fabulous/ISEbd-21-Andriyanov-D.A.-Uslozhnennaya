@@ -13,20 +13,75 @@ namespace Samosvalllll
 {
     public partial class FormParking : Form
     {
-        private readonly Parking<Gruzovik, EmblemCircle> parking;
+        private readonly ParkingCollection parkingCollection;
+
+        private readonly Stack<Vehicle> carStack;
+
         public FormParking()
         {
             InitializeComponent();
-            parking = new Parking<Gruzovik, EmblemCircle>(pictureBoxParking.Width, pictureBoxParking.Height);
+            parkingCollection = new ParkingCollection(pictureBoxParking.Width, pictureBoxParking.Height);
+            carStack = new Stack<Vehicle>();
             Draw();
         }
+
+        private void ReloadLevels()
+        {
+            int index = listBoxParkings.SelectedIndex;
+            listBoxParkings.Items.Clear();
+            for (int i = 0; i < parkingCollection.Keys.Count; i++)
+            {
+                listBoxParkings.Items.Add(parkingCollection.Keys[i]);
+            }
+            if (listBoxParkings.Items.Count > 0 && (index == -1 || index >=
+            listBoxParkings.Items.Count))
+            {
+                listBoxParkings.SelectedIndex = 0;
+            }
+            else 
+            if (listBoxParkings.Items.Count > 0 && index > -1 && index <
+            listBoxParkings.Items.Count)
+            {
+                listBoxParkings.SelectedIndex = index;
+            }
+        }
+
         private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
-            Graphics gr = Graphics.FromImage(bmp);
-            parking.Draw(gr);
-            pictureBoxParking.Image = bmp;
+            if (listBoxParkings.SelectedIndex > -1)
+            {
+                Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
+                Graphics gr = Graphics.FromImage(bmp);
+                parkingCollection[listBoxParkings.SelectedItem.ToString()].Draw(gr);
+                pictureBoxParking.Image = bmp;
+            }
         }
+
+        private void buttonAddParking_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxNewLevelName.Text))
+            {
+                MessageBox.Show("Введите название гаража", "Ошибка",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            parkingCollection.AddParking(textBoxNewLevelName.Text);
+            ReloadLevels();
+        }
+        private void buttonDeleteParking_Click(object sender, EventArgs e)
+        {
+            if (listBoxParkings.SelectedIndex > -1)
+            {
+                if (MessageBox.Show($"Удалить гараж { listBoxParkings.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    MessageBox.Show("Гараж удален");
+
+                    parkingCollection.DelParking(listBoxParkings.SelectedItem.ToString());
+                    ReloadLevels();
+                }
+            }
+        }
+
         private void buttonSetCar_Click(object sender, EventArgs e)
         {
             ColorDialog dialog = new ColorDialog();
@@ -34,7 +89,7 @@ namespace Samosvalllll
             {
                 var car = new Gruzovik(100, 1000, dialog.Color);
 
-                if (parking + car)
+                if (parkingCollection[listBoxParkings.SelectedItem.ToString()] + car)
                 {
 
                     Draw();
@@ -55,7 +110,7 @@ namespace Samosvalllll
                 if (dialogDop.ShowDialog() == DialogResult.OK)
                 {
                     var car = new Samosval(100, 1000, dialog.Color, dialogDop.Color, true, true);
-                    if (parking + car)
+                    if (parkingCollection[listBoxParkings.SelectedItem.ToString()] + car)
                     {
                         Draw();
                     }
@@ -66,54 +121,37 @@ namespace Samosvalllll
                 }
             }
         }
+
         private void buttonTakeCar_Click(object sender, EventArgs e)
         {
             if (maskedTextBox.Text != "")
             {
-                var car = parking - Convert.ToInt32(maskedTextBox.Text);
+                var car = parkingCollection[listBoxParkings.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBox.Text);
                 if (car != null)
                 {
-                    FormCar form = new FormCar();
-                    form.SetCar(car);
-                    form.ShowDialog();
+                    carStack.Push(car);
                 }
                 Draw();
             }
         }
 
-
-        private void ButtonCompare_Click(object sender, EventArgs e)
+        private void listBoxParkings_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int i;
-            if (maskedTextBoxCompare.Text != "")
-            {
-                i = Convert.ToInt32(maskedTextBoxCompare.Text);
-            }
-            else { return; }
-            if (checkBoxMore.Checked && !checkBoxLess.Checked)
-            {
-                if (parking > i)
-                {
-                    MessageBox.Show("Гараж заполнен более, чем на " + i + " мест(а)");
-                }
-                else
-                {
-                    MessageBox.Show("Гараж заполнен не более, чем на " + i + " мест(а)");
-                }
-            }
+            Draw();
+        }
 
-            else if (checkBoxLess.Checked && !checkBoxMore.Checked)
+        private void ButtonUnparkingCars_Click(object sender, EventArgs e)
+        {
+            if (carStack.Count() > 0)
             {
-                if (parking < i)
-                {
-                    MessageBox.Show("Гараж заполнен менее, чем на " + i + " мест(а)");
-                }
-                else
-                {
-                    MessageBox.Show("Гараж заполнен не менее, чем на " + i + " мест(а)");
-                }
+                FormCar form = new FormCar();
+                form.SetCar(carStack.Pop());
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Все машины просмотрены");
             }
         }
     }
 }
-
