@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Samosvalllll
 {
-    public partial class FormSamosval : Form
+    public partial class FormCar : Form
     {
         private ITransport car;
 
-        public FormSamosval()
+        public FormCar()
         {
             InitializeComponent();
             comboBoxWheels.Items.AddRange(new string[] { "2 пары колес", "3 пары колес", "4 пары колес" });                                                                                                                                 // buttonCreatePlane.Enabled = false;

@@ -73,7 +73,7 @@ namespace Samosvalllll
                 var car = parking - Convert.ToInt32(maskedTextBox.Text);
                 if (car != null)
                 {
-                    FormSamosval form = new FormSamosval();
+                    FormCar form = new FormCar();
                     form.SetCar(car);
                     form.ShowDialog();
                 }

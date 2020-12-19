@@ -58,11 +58,11 @@
     <Compile Include="FormParking.Designer.cs">
       <DependentUpon>FormParking.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSamosval.cs">
+    <Compile Include="FormCar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSamosval.Designer.cs">
-      <DependentUpon>FormSamosval.cs</DependentUpon>
+    <Compile Include="FormCar.Designer.cs">
+      <DependentUpon>FormCar.cs</DependentUpon>
     </Compile>
     <Compile Include="Vehicle.cs" />
     <Compile Include="IDopElement.cs" />
@@ -75,8 +75,8 @@
     <EmbeddedResource Include="FormParking.resx">
       <DependentUpon>FormParking.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSamosval.resx">
-      <DependentUpon>FormSamosval.cs</DependentUpon>
+    <EmbeddedResource Include="FormCar.resx">
+      <DependentUpon>FormCar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

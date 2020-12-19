@@ -1,6 +1,6 @@
 ﻿namespace Samosvalllll
 {
-	partial class FormSamosval
+	partial class FormCar
 	{
 		/// <summary>
 		/// Обязательная переменная конструктора.
