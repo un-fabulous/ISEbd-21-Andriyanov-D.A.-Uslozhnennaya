@@ -52,21 +52,31 @@
     <Compile Include="EmblemCircle.cs" />
     <Compile Include="EmblemRectangle.cs" />
     <Compile Include="EmblemTriangle.cs" />
-    <Compile Include="FormSamosval.cs">
+    <Compile Include="FormParking.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSamosval.Designer.cs">
-      <DependentUpon>FormSamosval.cs</DependentUpon>
+    <Compile Include="FormParking.Designer.cs">
+      <DependentUpon>FormParking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCar.Designer.cs">
+      <DependentUpon>FormCar.cs</DependentUpon>
     </Compile>
     <Compile Include="Vehicle.cs" />
     <Compile Include="IDopElement.cs" />
     <Compile Include="ITransport.cs" />
+    <Compile Include="Parking.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Samosval.cs" />
     <Compile Include="WheelDop.cs" />
-    <EmbeddedResource Include="FormSamosval.resx">
-      <DependentUpon>FormSamosval.cs</DependentUpon>
+    <EmbeddedResource Include="FormParking.resx">
+      <DependentUpon>FormParking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCar.resx">
+      <DependentUpon>FormCar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

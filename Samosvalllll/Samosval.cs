@@ -34,11 +34,22 @@ namespace Samosvalllll
             else if (ornamentwheel == 3)
             {
                 WheelsOrnament = new EmblemCircle(numberOfWheels, dopColor, mainColor);
-            }         
+            }
+        }
+
+        public Samosval(int maxSpeed, float weight, Color mainColor, Color dopColor, bool support, bool carcass) :
+          base(maxSpeed, weight, mainColor, 100, 60)
+        {
+            DopColor = dopColor;
+            Support = support;
+            Carcass = carcass;
+            WheelsOrnament = new EmblemCircle(3, dopColor, mainColor);
         }
 
         public override void DrawTransport(Graphics g)
         {
+           
+
             if (Support)
             {
                 Brush support = new SolidBrush(DopColor);
@@ -46,6 +57,7 @@ namespace Samosvalllll
                 PointF w1 = new PointF(_startPosX + 65, _startPosY - 30);
                 PointF w2 = new PointF(_startPosX + 70, _startPosY + 20);
                 PointF w3 = new PointF(_startPosX + 103, _startPosY + 20);
+
 
                 PointF[] supportP = { w1, w2, w3 };
                 g.FillPolygon(support, supportP);

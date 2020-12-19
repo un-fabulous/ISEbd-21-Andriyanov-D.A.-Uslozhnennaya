@@ -197,7 +197,7 @@
             this.buttonCreateSamosval.UseVisualStyleBackColor = true;
             this.buttonCreateSamosval.Click += new System.EventHandler(this.ButtonCreateSamosval_Click);
             // 
-            // FormCar
+            // FormSamosval
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -209,7 +209,7 @@
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.pictureBoxSamosval);
-            this.Name = "FormCar";
+            this.Name = "FormSamosval";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Самосвал";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSamosval)).EndInit();
@@ -237,3 +237,4 @@
         private System.Windows.Forms.Button buttonCreateSamosval;
     }
 }
+

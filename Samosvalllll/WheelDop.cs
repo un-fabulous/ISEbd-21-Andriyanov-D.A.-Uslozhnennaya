@@ -10,6 +10,7 @@ namespace Samosvalllll
     class WheelDop : IDopElement
     {
         private ElementsEnum wheels;
+
        
         public int SetNumberOfElements
 
@@ -65,6 +66,7 @@ namespace Samosvalllll
             g.FillEllipse(wheel, _startPosX + 30, _startPosY + 15, 25, 25);
         }
 
+
         private void DrawFourWheels(Graphics g, Color mainColor, float _startPosX, float _startPosY)
         {
             Brush wheel = new SolidBrush(mainColor);
@@ -72,6 +74,8 @@ namespace Samosvalllll
             DrawThreeWheels(g, mainColor, _startPosX, _startPosY);
 
             g.FillEllipse(wheel, _startPosX + 65, _startPosY + 15, 25, 25);
+
         }
+
     }
 }

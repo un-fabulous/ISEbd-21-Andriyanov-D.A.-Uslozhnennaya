@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Samosvalllll
 {
-    interface IDopElement
+    public interface IDopElement
      {
         int SetNumberOfElements { set; }
 

@@ -7,9 +7,10 @@ using System.Drawing;
 
 namespace Samosvalllll
 {
-   public class Gruzovik : Vehicle
-   {
+    public class Gruzovik : Vehicle
+	{
 		protected readonly int carWidth = 110;
+
 		protected readonly int carHeight = 60;
 		public Gruzovik(int maxSpeed, float weight, Color mainColor)
 		{
@@ -17,7 +18,6 @@ namespace Samosvalllll
 			Weight = weight;
 			MainColor = mainColor;
 		}
-
 		protected Gruzovik(int maxSpeed, float weight, Color mainColor, int carWidth, int carHeight)
 		{
 			MaxSpeed = maxSpeed;
@@ -26,7 +26,6 @@ namespace Samosvalllll
 			this.carWidth = carWidth;
 			this.carHeight = carHeight;
 		}
-
 		public override void MoveTransport(Direction direction)
 		{
 			float step = MaxSpeed * 100 / Weight;
@@ -73,6 +72,7 @@ namespace Samosvalllll
 			PointF p3 = new PointF(_startPosX + 85, _startPosY + 20);
 			PointF p4 = new PointF(_startPosX + 85, _startPosY);
 
+
 			PointF[] samosP = { p1, p2, p3, p4 };
 			g.FillPolygon(samos, samosP);
 
@@ -83,6 +83,8 @@ namespace Samosvalllll
 			PointF s3 = new PointF(_startPosX + 130, _startPosY + 20);
 			PointF s4 = new PointF(_startPosX + 95, _startPosY + 20);
 
+
+
 			PointF[] headP = { s1, s2, s3, s4 };
 			g.FillPolygon(head, headP);
 
@@ -90,6 +92,7 @@ namespace Samosvalllll
 			g.FillEllipse(circ, _startPosX + 2, _startPosY + 15, 25, 25);
 			
 			g.FillEllipse(circ, _startPosX + 100, _startPosY + 15, 25, 25);
-		}	
-   }
+		}
+			
+	}
 }

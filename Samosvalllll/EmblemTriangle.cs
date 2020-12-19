@@ -80,6 +80,7 @@ namespace Samosvalllll
             g.FillPolygon(emblem, emblemtr3);
         }
 
+
         private void DrawFourWheels(Graphics g, float _startPosX, float _startPosY)
         {
             Brush wheel = new SolidBrush(MainColor);
@@ -93,7 +94,9 @@ namespace Samosvalllll
             PointF d3 = new PointF(_startPosX + 77, _startPosY + 25);
             PointF[] emblemtr4 = { d1, d2, d3 };
             g.FillPolygon(emblem, emblemtr4);
+
         }
+
     }
 }
 
