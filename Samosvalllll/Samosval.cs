@@ -4,17 +4,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Collections;
 
 namespace Samosvalllll
 {
 
-    public class Samosval : Gruzovik
+    public class Samosval : Car, IEquatable<Samosval>, IComparable<Samosval>, IEnumerable<object>, IEnumerator<object>
     {
         public Color DopColor { private set; get; }
         public bool Support { private set; get; }
         public bool Carcass { private set; get; }
 
         IDopElement wheel;
+
+        public new LinkedList<object> objectProperties = new LinkedList<object>();
+
+        private int currentIndex = -1;
+
+        public new object Current => objectProperties.Find(currentIndex);
+
+        object IEnumerator<object>.Current => objectProperties.Find(currentIndex);
+
+        public new void Dispose()
+        {
+        }
+
+        public new bool MoveNext()
+        {
+            currentIndex++;
+            return (currentIndex < 8);
+        }
+
+        public new void Reset()
+        {
+            currentIndex = -1;
+        }
 
         public int Wheels { private set; get; }
 
@@ -100,6 +124,12 @@ namespace Samosvalllll
             {
                 wheel = new EmblemRectangle(Wheels, DopColor, MainColor);
             }
+
+            objectProperties.AddLast(DopColor);
+            objectProperties.AddLast(Support);
+            objectProperties.AddLast(Carcass);
+            objectProperties.AddLast(Wheels);
+            objectProperties.AddLast(WheelsOrnament);
         }
 
         public Samosval(int maxSpeed, float weight, Color mainColor, Color dopColor, bool support, bool carcass) :
@@ -153,6 +183,113 @@ namespace Samosvalllll
         public override string ToString()
         {
             return $"{base.ToString()}{separator}{DopColor.Name}{separator}{Support}{separator}{Carcass}{separator}{Wheels}{separator}{WheelsOrnament}";
+        }
+        public bool Equals(Samosval other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (Support != other.Support)
+            {
+                return false;
+            }
+            if (Carcass != other.Carcass)
+            {
+                return false;
+            }
+            if (Wheels != other.Wheels)
+            {
+                return false;
+            }
+            if (WheelsOrnament != other.WheelsOrnament)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is Samosval carObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(carObj);
+            }
+        }
+
+        public int CompareTo(Samosval s)
+        {
+            if (MaxSpeed != s.MaxSpeed)
+            {
+                return MaxSpeed.CompareTo(s.MaxSpeed);
+            }
+            if (Weight != s.Weight)
+            {
+                return Weight.CompareTo(s.Weight);
+            }
+            if (MainColor != s.MainColor)
+            {
+                return MainColor.Name.CompareTo(s.MainColor.Name);
+            }
+            if (DopColor != s.DopColor)
+            {
+                return DopColor.Name.CompareTo(s.DopColor.Name);
+            }
+            if (Support != s.Support)
+            {
+                return Support.CompareTo(s.Support);
+            }
+            if (Carcass != s.Carcass)
+            {
+                return Carcass.CompareTo(s.Carcass);
+            }
+            if (Wheels != s.Wheels)
+            {
+                return Wheels.CompareTo(s.Wheels) ;
+            }
+            if (WheelsOrnament != s.WheelsOrnament)
+            {
+                return WheelsOrnament.CompareTo(s.WheelsOrnament);
+            }
+            return 0;
+        }
+
+        public new IEnumerator<object> GetEnumerator()
+        {
+            return (IEnumerator<object>)objectProperties;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

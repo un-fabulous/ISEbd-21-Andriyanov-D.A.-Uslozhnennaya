@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Samosvalllll
+{
+    class ParkingAlreadyHaveException : Exception
+    {
+       public ParkingAlreadyHaveException() : base("В гараже уже есть такая машина")
+        { }
+    }
+}

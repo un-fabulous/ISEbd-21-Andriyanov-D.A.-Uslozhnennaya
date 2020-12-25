@@ -17,7 +17,7 @@ namespace Samosvalllll
     {
         private readonly ParkingCollection parkingCollection;
 
-        private readonly Stack<Vehicle> carStack;
+        private readonly Stack<Gruzovik> carStack;
 
         private readonly Logger logger;
 
@@ -25,7 +25,7 @@ namespace Samosvalllll
         {
             InitializeComponent();
             parkingCollection = new ParkingCollection(pictureBoxParking.Width, pictureBoxParking.Height);
-            carStack = new Stack<Vehicle>();
+            carStack = new Stack<Gruzovik>();
             logger = LogManager.GetCurrentClassLogger();
             Draw();
         }
@@ -76,7 +76,7 @@ namespace Samosvalllll
         {
             if (listBoxParkings.SelectedIndex > -1)
             {
-                if (MessageBox.Show($"Удалить гараж { listBoxParkings.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show($"Удалить парковку { listBoxParkings.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     logger.Info($"Удалили гараж {textBoxNewLevelName.Text}");
                     parkingCollection.DelParking(listBoxParkings.SelectedItem.ToString());
@@ -92,7 +92,7 @@ namespace Samosvalllll
             formCarConfig.Show();
         }
 
-        private void AddCar(Vehicle car)
+        private void AddCar(Gruzovik car)
         {
             if (car != null && listBoxParkings.SelectedIndex > -1)
             {
@@ -112,6 +112,11 @@ namespace Samosvalllll
                 {
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     logger.Warn("Переполнение");
+                }
+                catch (ParkingAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Warn("Дублирование");
                 }
                 catch (Exception ex)
                 {
@@ -162,7 +167,7 @@ namespace Samosvalllll
         {
             if (carStack.Count() > 0)
             {
-                FormCar form = new FormCar();
+                FormSamosval form = new FormSamosval();
                 form.SetCar(carStack.Pop());
                 form.ShowDialog();
             }
@@ -287,6 +292,15 @@ namespace Samosvalllll
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     logger.Fatal("Неизвестная ошибка при загрузке");
                 }
+            }
+        }
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            if (listBoxParkings.SelectedIndex > -1)
+            {
+                parkingCollection[listBoxParkings.SelectedItem.ToString()].Sort();
+                Draw();
+                logger.Info("Сортировка уровней");
             }
         }
     }

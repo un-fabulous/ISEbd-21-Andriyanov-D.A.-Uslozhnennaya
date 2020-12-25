@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Samosvalllll
 {
-    public partial class FormCar : Form
+    public partial class FormSamosval : Form
     {
         private ITransport car;
 
-        public FormCar()
+        public FormSamosval()
         {
             InitializeComponent();
             comboBoxWheels.Items.AddRange(new string[] { "2 пары колес", "3 пары колес", "4 пары колес" });                                                                                                                                 // buttonCreatePlane.Enabled = false;
@@ -40,7 +40,7 @@ namespace Samosvalllll
         private void buttonCreateGruz_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            car = new Gruzovik(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Gray);
+            car = new Car(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Gray);
             car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxSamosval.Width, pictureBoxSamosval.Height);
             Draw();
         }
@@ -55,8 +55,8 @@ namespace Samosvalllll
             string ornamentwheel = (checkBoxTriangle.Checked && !checkBoxRectangle.Checked && !checkBoxCircle.Checked) ? "EmblemTriangle" :
                                 (!checkBoxTriangle.Checked && checkBoxRectangle.Checked && !checkBoxCircle.Checked) ? "EmblemRectangle" :
                                 (!checkBoxTriangle.Checked && !checkBoxRectangle.Checked && checkBoxCircle.Checked ? "EmblemCircle" : "0");
-
-
+            
+        
             car = new Samosval(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Gray, Color.Red, true, true, numberOfWheels, ornamentwheel);
             car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxSamosval.Width, pictureBoxSamosval.Height);
             Draw();
