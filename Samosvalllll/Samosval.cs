@@ -20,6 +20,40 @@ namespace Samosvalllll
 
         public string WheelsOrnament { private set; get; }
 
+        public Samosval(string info) : base(info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 8)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                Support = Convert.ToBoolean(strs[4]);
+                Carcass = Convert.ToBoolean(strs[5]);
+                Wheels = Convert.ToInt32(strs[6]);
+                WheelsOrnament = strs[7];
+
+                if (WheelsOrnament == "EmblemTriangle")
+                {
+                    wheel = new EmblemTriangle(Wheels, DopColor, MainColor);
+                }
+                else if (WheelsOrnament == "EmblemRectangle")
+                {
+                    wheel = new EmblemRectangle(Wheels, DopColor, MainColor);
+                }
+                else if (WheelsOrnament == "EmblemCircle")
+                {
+                    wheel = new EmblemCircle(Wheels, DopColor, MainColor);
+                }
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}{separator}{DopColor.Name}{separator}{Support}{separator}{Carcass}{separator}{Wheels}{separator}{WheelsOrnament}";
+        }
+
         public void SetDopColor(Color color)
         {
             DopColor = color;
@@ -58,7 +92,6 @@ namespace Samosvalllll
             Carcass = carcass;
             Wheels = numberOfWheels;
             WheelsOrnament = ornamentwheel;
-
 
             if (WheelsOrnament == "EmblemCircle")
             {
@@ -118,8 +151,8 @@ namespace Samosvalllll
             g.DrawLine(Pens.Black, _startPosX, _startPosY + 20, _startPosX + 128, _startPosY + 20);
 
             if (wheel != null)
-            { 
-            wheel.DrawElement(g, DopColor, MainColor, _startPosX, _startPosY);
+            {
+                wheel.DrawElement(g, DopColor, MainColor, _startPosX, _startPosY);
             }
         }
         
