@@ -53,10 +53,7 @@ namespace Samosvalllll
             p._places.RemoveAt(index);
             return car;
         }
-
-       
-
-
+ 
         public void Draw(Graphics g)
         {
             DrawMarking(g);
@@ -67,8 +64,6 @@ namespace Samosvalllll
                 _places[i].DrawTransport(g);
             }
         }
-
-
 
         private void DrawMarking(Graphics g)
         {

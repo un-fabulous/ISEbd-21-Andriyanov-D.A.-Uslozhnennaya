@@ -9,9 +9,13 @@ namespace Samosvalllll
     class ParkingCollection
     {
         readonly Dictionary<string, Parking<Vehicle, EmblemCircle>> parkingStages;
+
         public List<string> Keys => parkingStages.Keys.ToList();
+
         private readonly int pictureWidth;
+
         private readonly int pictureHeight;
+
         public ParkingCollection(int pictureWidth, int pictureHeight)
         {
             parkingStages = new Dictionary<string, Parking<Vehicle, EmblemCircle>>();
