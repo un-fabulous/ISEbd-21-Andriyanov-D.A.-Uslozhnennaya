@@ -33,7 +33,6 @@ namespace Samosvalllll
             _places = new List<T>();
         }
 
-
         public static bool operator +(Parking<T, P> p, T car)
         {
             if (p._places.Count >= p._maxCount)
@@ -54,9 +53,6 @@ namespace Samosvalllll
             return car;
         }
 
-       
-
-
         public void Draw(Graphics g)
         {
             DrawMarking(g);
@@ -67,8 +63,6 @@ namespace Samosvalllll
                 _places[i].DrawTransport(g);
             }
         }
-
-
 
         private void DrawMarking(Graphics g)
         {
