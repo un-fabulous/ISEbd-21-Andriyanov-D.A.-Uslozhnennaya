@@ -34,12 +34,9 @@ namespace Samosvalllll
                     {
                         sw.WriteLine($"Parking{separator}{level.Key}");
 
-                        ITransport car = null;
-
-                        for (int i = 0; (car = level.Value.GetNext(i)) != null; i++)
+                        foreach (ITransport car in level.Value)
                         {
-                            if (car != null)
-                            {
+
                                 if (car.GetType().Name == "Car")
                                 {
                                     sw.Write($"Gruzovik{separator}");
@@ -54,7 +51,8 @@ namespace Samosvalllll
                     }
                 }
             }
-        }
+        
+    
 
         public void SaveData(string filename, string parkingName)
         {
@@ -72,10 +70,10 @@ namespace Samosvalllll
                         sw.WriteLine($"OneParking");
 
                         sw.WriteLine($"Parking{separator}{parkingName}");
-                        ITransport car = null;
+
                         var level = parkingStages[parkingName];
 
-                        for (int i = 0; (car = level[i]) != null; i++)
+                        foreach (ITransport car in level)
                         {
                             if (car != null)
                             {

@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Gruzovik.cs" />
+    <Compile Include="CarComparer.cs" />
     <Compile Include="CarNotFoundException.cs" />
     <Compile Include="Directions.cs" />
     <Compile Include="ElementsEnum.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="IDopElement.cs" />
     <Compile Include="ITransport.cs" />
     <Compile Include="Parking.cs" />
+    <Compile Include="ParkingAlreadyHaveException.cs" />
     <Compile Include="ParkingCollections.cs" />
     <Compile Include="ParkingOverflowException.cs" />
     <Compile Include="Program.cs" />

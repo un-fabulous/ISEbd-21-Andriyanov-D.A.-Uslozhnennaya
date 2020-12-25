@@ -55,8 +55,8 @@ namespace Samosvalllll
             string ornamentwheel = (checkBoxTriangle.Checked && !checkBoxRectangle.Checked && !checkBoxCircle.Checked) ? "EmblemTriangle" :
                                 (!checkBoxTriangle.Checked && checkBoxRectangle.Checked && !checkBoxCircle.Checked) ? "EmblemRectangle" :
                                 (!checkBoxTriangle.Checked && !checkBoxRectangle.Checked && checkBoxCircle.Checked ? "EmblemCircle" : "0");
-
-
+            
+        
             car = new Samosval(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Gray, Color.Red, true, true, numberOfWheels, ornamentwheel);
             car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxSamosval.Width, pictureBoxSamosval.Height);
             Draw();

@@ -113,6 +113,11 @@ namespace Samosvalllll
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     logger.Warn("Переполнение");
                 }
+                catch (ParkingAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Warn("Дублирование");
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Машину не удалось припарковать");
@@ -287,6 +292,15 @@ namespace Samosvalllll
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     logger.Fatal("Неизвестная ошибка при загрузке");
                 }
+            }
+        }
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            if (listBoxParkings.SelectedIndex > -1)
+            {
+                parkingCollection[listBoxParkings.SelectedItem.ToString()].Sort();
+                Draw();
+                logger.Info("Сортировка уровней");
             }
         }
     }

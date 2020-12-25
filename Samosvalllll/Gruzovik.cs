@@ -4,16 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Collections;
 
 namespace Samosvalllll
 {
-	 public class Gruzovik : Vehicle
-	 {
+	 public class Gruzovik : Vehicle, IEquatable<Gruzovik>, IComparable<Gruzovik>, IEnumerable<object>, IEnumerator<object>
+	{
 		protected readonly int carWidth = 110;
 
 		protected readonly int carHeight = 60;
 
 		protected readonly char separator = ';';
+
+		public LinkedList<object> objectProperties = new LinkedList<object>();
+
+		private int currentIndex = -1;
+
+		public object Current => objectProperties.Find(currentIndex);
+
+		object IEnumerator<object>.Current => objectProperties.Find(currentIndex);
+
+		public void Dispose()
+		{
+		}
+
+		public bool MoveNext()
+		{
+			currentIndex++;
+			return (currentIndex < 8);
+		}
+
+		public void Reset()
+		{
+			currentIndex = -1;
+		}
 
 		public Gruzovik(string info)
 		{
@@ -23,6 +47,9 @@ namespace Samosvalllll
 				MaxSpeed = Convert.ToInt32(strs[0]);
 				Weight = Convert.ToInt32(strs[1]);
 				MainColor = Color.FromName(strs[2]);
+				objectProperties.AddLast(MaxSpeed);
+				objectProperties.AddLast(Weight);
+				objectProperties.AddLast(MainColor);
 			}
 		}
 
@@ -36,6 +63,9 @@ namespace Samosvalllll
 			MaxSpeed = maxSpeed;
 			Weight = weight;
 			MainColor = mainColor;
+			objectProperties.AddLast(MaxSpeed);
+			objectProperties.AddLast(Weight);
+			objectProperties.AddLast(MainColor);
 		}
 		protected Gruzovik(int maxSpeed, float weight, Color mainColor, int carWidth, int carHeight)
 		{
@@ -44,7 +74,79 @@ namespace Samosvalllll
 			MainColor = mainColor;
 			this.carWidth = carWidth;
 			this.carHeight = carHeight;
+			objectProperties.AddLast(MaxSpeed);
+			objectProperties.AddLast(Weight);
+			objectProperties.AddLast(MainColor);
 		}
+
+		public bool Equals(Gruzovik other)
+		{
+			if (other == null)
+			{
+				return false;
+			}
+			if (GetType().Name != other.GetType().Name)
+			{
+				return false;
+			}
+			if (MaxSpeed != other.MaxSpeed)
+			{
+				return false;
+			}
+			if (Weight != other.Weight)
+			{
+				return false;
+			}
+			if (MainColor != other.MainColor)
+			{
+				return false;
+			}
+			return true;
+		}
+
+		public override bool Equals(Object obj)
+		{
+			if (obj == null)
+			{
+				return false;
+			}
+			if (!(obj is Gruzovik planeObj))
+			{
+				return false;
+			}
+			else
+			{
+				return Equals(planeObj);
+			}
+		}
+
+		public int CompareTo(Gruzovik p)
+		{
+			if (MaxSpeed != p.MaxSpeed)
+			{
+				return MaxSpeed.CompareTo(p.MaxSpeed);
+			}
+			if (Weight != p.Weight)
+			{
+				return Weight.CompareTo(p.Weight);
+			}
+			if (MainColor != p.MainColor)
+			{
+				return MainColor.Name.CompareTo(p.MainColor.Name);
+			}
+			return 0;
+		}
+
+		public IEnumerator<object> GetEnumerator()
+		{
+			return (IEnumerator<object>)objectProperties;
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
+		}
+
 		public override void MoveTransport(Direction direction)
 		{
 			float step = MaxSpeed * 100 / Weight;
