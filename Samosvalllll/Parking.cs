@@ -10,7 +10,7 @@ namespace Samosvalllll
 {
     public class Parking<T, P> where T : class, ITransport where P : class, IDopElement
     {
-        public readonly List<T> _places;
+        private readonly List<T> _places;
 
         private readonly int _maxCount;
 
