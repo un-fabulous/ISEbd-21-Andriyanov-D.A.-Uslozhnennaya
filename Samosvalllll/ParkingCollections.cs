@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Samosvalllll
 {
-    class ParkingCollection 
+    class ParkingCollection
     {
         readonly Dictionary<string, Parking<Vehicle, EmblemCircle>> parkingStages;
 
@@ -50,7 +50,6 @@ namespace Samosvalllll
                     return null;
             }
         }
-
         public Vehicle this[string key, int ind]
         {
             get

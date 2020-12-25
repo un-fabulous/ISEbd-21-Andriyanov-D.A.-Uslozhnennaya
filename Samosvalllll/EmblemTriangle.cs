@@ -45,7 +45,7 @@ namespace Samosvalllll
 
         private void DrawTwoWheels(Graphics g, float _startPosX, float _startPosY)
         {
-            Brush wheel = new SolidBrush(MainColor);
+            Brush wheel = new SolidBrush(Color.Black);
 
 
             g.FillEllipse(wheel, _startPosX + 2, _startPosY + 15, 25, 25);
@@ -67,7 +67,7 @@ namespace Samosvalllll
 
         private void DrawThreeWheels(Graphics g, float _startPosX, float _startPosY)
         {
-            Brush wheel = new SolidBrush(MainColor);
+            Brush wheel = new SolidBrush(Color.Black);
 
             DrawTwoWheels(g, _startPosX, _startPosY);
             g.FillEllipse(wheel, _startPosX + 30, _startPosY + 15, 25, 25);
@@ -83,7 +83,7 @@ namespace Samosvalllll
 
         private void DrawFourWheels(Graphics g, float _startPosX, float _startPosY)
         {
-            Brush wheel = new SolidBrush(MainColor);
+            Brush wheel = new SolidBrush(Color.Black);
 
             DrawThreeWheels(g, _startPosX, _startPosY);
             g.FillEllipse(wheel, _startPosX + 65, _startPosY + 15, 25, 25);

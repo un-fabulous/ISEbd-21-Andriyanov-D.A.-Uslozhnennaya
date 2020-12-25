@@ -16,7 +16,6 @@ namespace Samosvalllll
         private readonly ParkingCollection parkingCollection;
 
         private readonly Stack<Vehicle> carStack;
-
         public FormParking()
         {
             InitializeComponent();
@@ -38,8 +37,7 @@ namespace Samosvalllll
             {
                 listBoxParkings.SelectedIndex = 0;
             }
-            else 
-            if (listBoxParkings.Items.Count > 0 && index > -1 && index <
+            else if (listBoxParkings.Items.Count > 0 && index > -1 && index <
             listBoxParkings.Items.Count)
             {
                 listBoxParkings.SelectedIndex = index;
@@ -84,44 +82,27 @@ namespace Samosvalllll
 
         private void buttonSetCar_Click(object sender, EventArgs e)
         {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            var formCarConfig = new FormCarConfig();
+            formCarConfig.AddEvent(AddCar);
+            formCarConfig.Show();
+        }
+
+        private void AddCar(Vehicle car)
+        {
+            if (car != null && listBoxParkings.SelectedIndex > -1)
             {
-                var car = new Gruzovik(100, 1000, dialog.Color);
-
-                if (parkingCollection[listBoxParkings.SelectedItem.ToString()] + car)
+                if ((parkingCollection[listBoxParkings.SelectedItem.ToString()]) + car)
                 {
-
                     Draw();
                 }
                 else
                 {
-                    MessageBox.Show("Гараж переполнен");
+                    MessageBox.Show("Машину не удалось припарковать");
                 }
             }
         }
 
-        private void buttonSetSamosval_Click(object sender, EventArgs e)
-        {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                ColorDialog dialogDop = new ColorDialog();
-                if (dialogDop.ShowDialog() == DialogResult.OK)
-                {
-                    var car = new Samosval(100, 1000, dialog.Color, dialogDop.Color, true, true);
-                    if (parkingCollection[listBoxParkings.SelectedItem.ToString()] + car)
-                    {
-                        Draw();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Гараж переполнен");
-                    }
-                }
-            }
-        }
-
+       
         private void buttonTakeCar_Click(object sender, EventArgs e)
         {
             if (maskedTextBox.Text != "")
@@ -155,3 +136,4 @@ namespace Samosvalllll
         }
     }
 }
+
