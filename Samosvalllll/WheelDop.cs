@@ -10,8 +10,7 @@ namespace Samosvalllll
     class WheelDop : IDopElement
     {
         private ElementsEnum wheels;
-
-
+   
         public int SetNumberOfElements
 
         {

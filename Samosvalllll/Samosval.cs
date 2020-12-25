@@ -49,11 +49,6 @@ namespace Samosvalllll
             }
         }
 
-        public override string ToString()
-        {
-            return $"{base.ToString()}{separator}{DopColor.Name}{separator}{Support}{separator}{Carcass}{separator}{Wheels}{separator}{WheelsOrnament}";
-        }
-
         public void SetDopColor(Color color)
         {
             DopColor = color;
@@ -151,10 +146,13 @@ namespace Samosvalllll
             g.DrawLine(Pens.Black, _startPosX, _startPosY + 20, _startPosX + 128, _startPosY + 20);
 
             if (wheel != null)
-            {
-                wheel.DrawElement(g, DopColor, MainColor, _startPosX, _startPosY);
-            }
+            { 
+            wheel.DrawElement(g, DopColor, MainColor, _startPosX, _startPosY);
+            }         
         }
-        
+        public override string ToString()
+        {
+            return $"{base.ToString()}{separator}{DopColor.Name}{separator}{Support}{separator}{Carcass}{separator}{Wheels}{separator}{WheelsOrnament}";
+        }
     }
 }

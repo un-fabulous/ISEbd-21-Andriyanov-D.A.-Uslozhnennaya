@@ -37,7 +37,7 @@ namespace Samosvalllll
         {
             if (p._places.Count >= p._maxCount)
             {
-                return false;
+                throw new ParkingOverflowException();
             }
             p._places.Add(car);
             return true;
@@ -46,7 +46,7 @@ namespace Samosvalllll
         {
             if (index < -1 || index > p._places.Count)
             {
-                return null;
+                throw new CarNotFoundException(index);
             }
             T car = p._places[index];
             p._places.RemoveAt(index);
