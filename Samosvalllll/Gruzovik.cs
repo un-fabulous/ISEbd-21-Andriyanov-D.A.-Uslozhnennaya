@@ -7,11 +7,30 @@ using System.Drawing;
 
 namespace Samosvalllll
 {
-   public class Gruzovik : Vehicle
-   {
+	 public class Gruzovik : Vehicle
+	 {
 		protected readonly int carWidth = 110;
 
 		protected readonly int carHeight = 60;
+
+		protected readonly char separator = ';';
+
+		public Gruzovik(string info)
+		{
+			string[] strs = info.Split(separator);
+			if (strs.Length == 3)
+			{
+				MaxSpeed = Convert.ToInt32(strs[0]);
+				Weight = Convert.ToInt32(strs[1]);
+				MainColor = Color.FromName(strs[2]);
+			}
+		}
+
+		public override string ToString()
+		{
+			return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
+		}
+
 		public Gruzovik(int maxSpeed, float weight, Color mainColor)
 		{
 			MaxSpeed = maxSpeed;
@@ -94,5 +113,5 @@ namespace Samosvalllll
 			g.FillEllipse(circ, _startPosX + 100, _startPosY + 15, 25, 25);
 		}
 			
-   }
+	}
 }

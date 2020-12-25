@@ -40,16 +40,27 @@
             this.listBoxParkings = new System.Windows.Forms.ListBox();
             this.buttonDeleteParking = new System.Windows.Forms.Button();
             this.buttonSetCar = new System.Windows.Forms.Button();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.СохранитьВсеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.СохранитьВыбраннуюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ЗагрузитьВсеToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ЗагрузитьОднуToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBoxTakeCar.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxParking
             // 
             this.pictureBoxParking.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxParking.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxParking.Location = new System.Drawing.Point(0, 24);
             this.pictureBoxParking.Name = "pictureBoxParking";
-            this.pictureBoxParking.Size = new System.Drawing.Size(726, 463);
+            this.pictureBoxParking.Size = new System.Drawing.Size(726, 439);
             this.pictureBoxParking.TabIndex = 0;
             this.pictureBoxParking.TabStop = false;
             // 
@@ -157,6 +168,80 @@
             this.buttonSetCar.UseVisualStyleBackColor = true;
             this.buttonSetCar.Click += new System.EventHandler(this.buttonSetCar_Click);
             // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(863, 24);
+            this.menuStrip.TabIndex = 13;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сохранитьToolStripMenuItem,
+            this.загрузитьToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.СохранитьВсеToolStripMenuItem,
+            this.СохранитьВыбраннуюToolStripMenuItem});
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            // 
+            // СохранитьВсеToolStripMenuItem
+            // 
+            this.СохранитьВсеToolStripMenuItem.Name = "СохранитьВсеToolStripMenuItem";
+            this.СохранитьВсеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.СохранитьВсеToolStripMenuItem.Text = "Все";
+            this.СохранитьВсеToolStripMenuItem.Click += new System.EventHandler(this.СохранитьВсеToolStripMenuItem_Click);
+            // 
+            // СохранитьВыбраннуюToolStripMenuItem
+            // 
+            this.СохранитьВыбраннуюToolStripMenuItem.Name = "СохранитьВыбраннуюToolStripMenuItem";
+            this.СохранитьВыбраннуюToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.СохранитьВыбраннуюToolStripMenuItem.Text = "Выбранную";
+            this.СохранитьВыбраннуюToolStripMenuItem.Click += new System.EventHandler(this.СохранитьВыбраннуюToolStripMenuItem_Click);
+            // 
+            // загрузитьToolStripMenuItem
+            // 
+            this.загрузитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ЗагрузитьВсеToolStripMenuItem1,
+            this.ЗагрузитьОднуToolStripMenuItem1});
+            this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьToolStripMenuItem.Text = "Загрузить";
+            // 
+            // ЗагрузитьВсеToolStripMenuItem1
+            // 
+            this.ЗагрузитьВсеToolStripMenuItem1.Name = "ЗагрузитьВсеToolStripMenuItem1";
+            this.ЗагрузитьВсеToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.ЗагрузитьВсеToolStripMenuItem1.Text = "Все";
+            this.ЗагрузитьВсеToolStripMenuItem1.Click += new System.EventHandler(this.ЗагрузитьВсеToolStripMenuItem1_Click);
+            // 
+            // ЗагрузитьОднуToolStripMenuItem1
+            // 
+            this.ЗагрузитьОднуToolStripMenuItem1.Name = "ЗагрузитьОднуToolStripMenuItem1";
+            this.ЗагрузитьОднуToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.ЗагрузитьОднуToolStripMenuItem1.Text = "Одну";
+            this.ЗагрузитьОднуToolStripMenuItem1.Click += new System.EventHandler(this.ЗагрузитьОднуToolStripMenuItem1_Click);
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "txt file | *.txt";
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            this.openFileDialog.Filter = "txt file | *.txt";
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,11 +255,15 @@
             this.Controls.Add(this.textBoxNewLevelName);
             this.Controls.Add(this.groupBoxTakeCar);
             this.Controls.Add(this.pictureBoxParking);
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "FormParking";
             this.Text = "Гараж";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).EndInit();
             this.groupBoxTakeCar.ResumeLayout(false);
             this.groupBoxTakeCar.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,5 +283,15 @@
         private System.Windows.Forms.ListBox listBoxParkings;
         private System.Windows.Forms.Button buttonDeleteParking;
         private System.Windows.Forms.Button buttonSetCar;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem СохранитьВсеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem СохранитьВыбраннуюToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ЗагрузитьВсеToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ЗагрузитьОднуToolStripMenuItem1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

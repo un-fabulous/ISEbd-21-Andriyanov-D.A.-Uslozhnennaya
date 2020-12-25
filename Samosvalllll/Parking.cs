@@ -33,7 +33,6 @@ namespace Samosvalllll
             _places = new List<T>();
         }
 
-
         public static bool operator +(Parking<T, P> p, T car)
         {
             if (p._places.Count >= p._maxCount)
@@ -53,7 +52,7 @@ namespace Samosvalllll
             p._places.RemoveAt(index);
             return car;
         }
- 
+
         public void Draw(Graphics g)
         {
             DrawMarking(g);
@@ -84,12 +83,25 @@ namespace Samosvalllll
         {
             get
             {
-                if (ind >= 0 && ind < _maxCount)
+                if (ind >= 0 && ind < _places.Count)
                 {
                     return _places[ind];
                 }
                 return null;
             }
+        }
+
+        public void ClearOneStage()
+        {
+            _places.Clear();
+        }
+        public T GetNext(int index)
+        {
+            if (index < 0 || index >= _places.Count)
+            {
+                return null;
+            }
+            return _places[index];
         }
     }
 }
