@@ -18,7 +18,7 @@ namespace Samosvalllll
 
         private readonly char separator = ':';
 
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -54,9 +54,9 @@ namespace Samosvalllll
                     }
                 }
             }
-            return true;
         }
-        public bool SaveData(string filename, string parkingName)
+
+        public void SaveData(string filename, string parkingName)
         {
             if (File.Exists(filename))
             {
@@ -92,16 +92,15 @@ namespace Samosvalllll
                         }
                     }
                 }
-                return true;
             }
-            return false;
+            throw new FormatException();
         }
 
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
 
             string btf = "";
@@ -116,7 +115,7 @@ namespace Samosvalllll
                 }
                 else
                 {
-                    return false;
+                    throw new FormatException();
                 }
 
                 btf = sr.ReadLine();
@@ -148,25 +147,29 @@ namespace Samosvalllll
 
                         if (!result)
                         {
-                            return false;
+                            throw new NullReferenceException();
                         }
 
                         btf = sr.ReadLine();
                     }
                 }
-                return true;
             }
         }
 
-        public bool LoadOneStage(string filename)
+        public void LoadOneStage(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             using (StreamReader sr = new StreamReader(filename))
             {
                 string line = sr.ReadLine();
+               
+                if (!line.Contains("OneParking"))
+                {
+                    throw new FormatException();
+                }
                 line = sr.ReadLine();
                 Vehicle car = null;
                 string key = string.Empty;
@@ -195,7 +198,7 @@ namespace Samosvalllll
                         var result = parkingStages[key] + car;
                         if (!result)
                         {
-                            return false;
+                            throw new NullReferenceException();
                         }
                         line = sr.ReadLine();
                     }
@@ -203,10 +206,8 @@ namespace Samosvalllll
 
                 else
                 {
-                    return false;
+                    throw new FormatException();
                 }
-
-                return true;
             }
         }
 
