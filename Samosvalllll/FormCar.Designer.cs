@@ -1,6 +1,6 @@
 ﻿namespace Samosvalllll
 {
-	partial class FormSamosval
+	partial class FormCar
 	{
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -38,12 +38,12 @@
             this.checkBoxTriangle = new System.Windows.Forms.CheckBox();
             this.checkBoxRectangle = new System.Windows.Forms.CheckBox();
             this.checkBoxCircle = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.groupBoxParams = new System.Windows.Forms.GroupBox();
+            this.labelOrnament = new System.Windows.Forms.Label();
+            this.labelWheels = new System.Windows.Forms.Label();
             this.buttonCreateSamosval = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSamosval)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxParams.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxSamosval
@@ -153,39 +153,39 @@
             this.checkBoxCircle.Text = "Круг";
             this.checkBoxCircle.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // groupBoxParams
             // 
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.checkBoxTriangle);
-            this.groupBox1.Controls.Add(this.comboBoxWheels);
-            this.groupBox1.Controls.Add(this.checkBoxCircle);
-            this.groupBox1.Controls.Add(this.checkBoxRectangle);
-            this.groupBox1.Controls.Add(this.buttonCreateSamosval);
-            this.groupBox1.Location = new System.Drawing.Point(659, 66);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(129, 215);
-            this.groupBox1.TabIndex = 15;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Самосвал";
+            this.groupBoxParams.Controls.Add(this.labelOrnament);
+            this.groupBoxParams.Controls.Add(this.labelWheels);
+            this.groupBoxParams.Controls.Add(this.checkBoxTriangle);
+            this.groupBoxParams.Controls.Add(this.comboBoxWheels);
+            this.groupBoxParams.Controls.Add(this.checkBoxCircle);
+            this.groupBoxParams.Controls.Add(this.checkBoxRectangle);
+            this.groupBoxParams.Controls.Add(this.buttonCreateSamosval);
+            this.groupBoxParams.Location = new System.Drawing.Point(659, 66);
+            this.groupBoxParams.Name = "groupBoxParams";
+            this.groupBoxParams.Size = new System.Drawing.Size(129, 215);
+            this.groupBoxParams.TabIndex = 15;
+            this.groupBoxParams.TabStop = false;
+            this.groupBoxParams.Text = "Самосвал";
             // 
-            // label2
+            // labelOrnament
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 97);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 13);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Орнамент на колесах";
+            this.labelOrnament.AutoSize = true;
+            this.labelOrnament.Location = new System.Drawing.Point(6, 97);
+            this.labelOrnament.Name = "labelOrnament";
+            this.labelOrnament.Size = new System.Drawing.Size(117, 13);
+            this.labelOrnament.TabIndex = 15;
+            this.labelOrnament.Text = "Орнамент на колесах";
             // 
-            // label1
+            // labelWheels
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Количество колес:";
+            this.labelWheels.AutoSize = true;
+            this.labelWheels.Location = new System.Drawing.Point(7, 30);
+            this.labelWheels.Name = "labelWheels";
+            this.labelWheels.Size = new System.Drawing.Size(102, 13);
+            this.labelWheels.TabIndex = 14;
+            this.labelWheels.Text = "Количество колес:";
             // 
             // buttonCreateSamosval
             // 
@@ -202,7 +202,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxParams);
             this.Controls.Add(this.buttonCreateGruz);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonDown);
@@ -213,8 +213,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Самосвал";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSamosval)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxParams.ResumeLayout(false);
+            this.groupBoxParams.PerformLayout();
             this.ResumeLayout(false);
 
 		}
@@ -231,9 +231,9 @@
         private System.Windows.Forms.CheckBox checkBoxTriangle;
         private System.Windows.Forms.CheckBox checkBoxRectangle;
         private System.Windows.Forms.CheckBox checkBoxCircle;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBoxParams;
+        private System.Windows.Forms.Label labelOrnament;
+        private System.Windows.Forms.Label labelWheels;
         private System.Windows.Forms.Button buttonCreateSamosval;
     }
 }

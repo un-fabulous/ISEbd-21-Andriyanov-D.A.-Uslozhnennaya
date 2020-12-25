@@ -6,30 +6,30 @@ using System.Threading.Tasks;
 
 namespace Samosvalllll
 {
-    class CarComparer
+    class CarComparer : IComparer<Vehicle>
     {
-        public int Compare(Gruzovik x, Gruzovik y)
+        public int Compare(Vehicle x, Vehicle y)
         {
             if (x is Samosval && y is Samosval)
             {
                 return ComparerSamosval((Samosval)x, (Samosval)y);
             }
-            if (x is Samosval && y is Car)
+            if (x is Samosval && y is Gruzovik)
             {
                 return -1;
             }
-            if (x is Car && y is Samosval)
+            if (x is Gruzovik && y is Samosval)
             {
                 return 1;
             }
-            if (x is Car && y is Car)
+            if (x is Gruzovik && y is Gruzovik)
             {
-                return ComparerGruzovik((Car)x, (Car)y);
+                return ComparerGruzovik((Gruzovik)x, (Gruzovik)y);
             }
             return 0;
         }
 
-        private int ComparerGruzovik(Car x, Car y)
+        private int ComparerGruzovik(Gruzovik x, Gruzovik y)
         {
             if (x.MaxSpeed != y.MaxSpeed)
             {

@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Samosvalllll
 {
-    public partial class FormSamosval : Form
+    public partial class FormCar : Form
     {
         private ITransport car;
 
-        public FormSamosval()
+        public FormCar()
         {
             InitializeComponent();
             comboBoxWheels.Items.AddRange(new string[] { "2 пары колес", "3 пары колес", "4 пары колес" });                                                                                                                                 // buttonCreatePlane.Enabled = false;
@@ -40,7 +40,7 @@ namespace Samosvalllll
         private void buttonCreateGruz_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            car = new Car(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Gray);
+            car = new Gruzovik(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Gray);
             car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxSamosval.Width, pictureBoxSamosval.Height);
             Draw();
         }

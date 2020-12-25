@@ -17,7 +17,7 @@ namespace Samosvalllll
     {
         private readonly ParkingCollection parkingCollection;
 
-        private readonly Stack<Gruzovik> carStack;
+        private readonly Stack<Vehicle> carStack;
 
         private readonly Logger logger;
 
@@ -25,7 +25,7 @@ namespace Samosvalllll
         {
             InitializeComponent();
             parkingCollection = new ParkingCollection(pictureBoxParking.Width, pictureBoxParking.Height);
-            carStack = new Stack<Gruzovik>();
+            carStack = new Stack<Vehicle>();
             logger = LogManager.GetCurrentClassLogger();
             Draw();
         }
@@ -76,7 +76,7 @@ namespace Samosvalllll
         {
             if (listBoxParkings.SelectedIndex > -1)
             {
-                if (MessageBox.Show($"Удалить парковку { listBoxParkings.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show($"Удалить гараж { listBoxParkings.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     logger.Info($"Удалили гараж {textBoxNewLevelName.Text}");
                     parkingCollection.DelParking(listBoxParkings.SelectedItem.ToString());
@@ -92,7 +92,7 @@ namespace Samosvalllll
             formCarConfig.Show();
         }
 
-        private void AddCar(Gruzovik car)
+        private void AddCar(Vehicle car)
         {
             if (car != null && listBoxParkings.SelectedIndex > -1)
             {
@@ -167,7 +167,7 @@ namespace Samosvalllll
         {
             if (carStack.Count() > 0)
             {
-                FormSamosval form = new FormSamosval();
+                FormCar form = new FormCar();
                 form.SetCar(carStack.Pop());
                 form.ShowDialog();
             }

@@ -8,8 +8,7 @@ using System.Collections;
 
 namespace Samosvalllll
 {
-
-    public class Samosval : Car, IEquatable<Samosval>, IComparable<Samosval>, IEnumerable<object>, IEnumerator<object>
+    public class Samosval : Gruzovik, IEquatable<Samosval>, IComparable<Samosval>, IEnumerable<object>, IEnumerator<object>
     {
         public Color DopColor { private set; get; }
         public bool Support { private set; get; }

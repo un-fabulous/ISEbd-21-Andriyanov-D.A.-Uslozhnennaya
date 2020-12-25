@@ -12,9 +12,9 @@ namespace Samosvalllll
 {
     public partial class FormCarConfig : Form
     {
-        Gruzovik car = null;
+        Vehicle car = null;
 
-        private event Action<Gruzovik> eventAddCar;
+        private event Action<Vehicle> eventAddCar;
         public FormCarConfig()
         {
             InitializeComponent();
@@ -45,11 +45,11 @@ namespace Samosvalllll
             }
         }
 
-        public void AddEvent(Action<Gruzovik> e)
+        public void AddEvent(Action<Vehicle> e)
         {
             if (eventAddCar == null)
             {
-                eventAddCar = new Action<Gruzovik>(e);
+                eventAddCar = new Action<Vehicle>(e);
             }
             else
             {
@@ -87,7 +87,7 @@ namespace Samosvalllll
             switch (e.Data.GetData(DataFormats.Text).ToString())
             {
                 case "Грузовик":
-                    car = new Car((int)numericUpDownSpeed.Value, (int)numericUpDownWeight.Value, Color.White);
+                    car = new Gruzovik((int)numericUpDownSpeed.Value, (int)numericUpDownWeight.Value, Color.White);
                     break;
                 case "Самосвал":
                     car = new Samosval((int)numericUpDownSpeed.Value, (int)numericUpDownWeight.Value, Color.White, Color.Black,

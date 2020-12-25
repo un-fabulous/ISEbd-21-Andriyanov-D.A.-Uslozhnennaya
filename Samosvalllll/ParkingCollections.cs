@@ -9,7 +9,7 @@ namespace Samosvalllll
 {
     class ParkingCollection
     {
-        readonly Dictionary<string, Parking<Gruzovik, EmblemCircle>> parkingStages;
+        readonly Dictionary<string, Parking<Vehicle, EmblemCircle>> parkingStages;
         public List<string> Keys => parkingStages.Keys.ToList();
         
         private readonly int pictureWidth;
@@ -117,7 +117,7 @@ namespace Samosvalllll
                 }
 
                 btf = sr.ReadLine();
-                Gruzovik car = null;
+                Vehicle car = null;
                 string key = string.Empty;
 
                 while (btf != null && btf.Contains("Parking"))
@@ -125,7 +125,7 @@ namespace Samosvalllll
                     if (btf.Contains("Parking"))
                     {
                         key = btf.Split(separator)[1];
-                        parkingStages.Add(key, new Parking<Gruzovik, EmblemCircle>(pictureWidth, pictureHeight));
+                        parkingStages.Add(key, new Parking<Vehicle, EmblemCircle>(pictureWidth, pictureHeight));
                     }
 
                     btf = sr.ReadLine();
@@ -134,7 +134,7 @@ namespace Samosvalllll
                     {
                         if (btf.Split(separator)[0] == "Gruzovik")
                         {
-                            car = new Car(btf.Split(separator)[1]);
+                            car = new Gruzovik(btf.Split(separator)[1]);
                         }
                         else if (btf.Split(separator)[0] == "Samosval")
                         {
@@ -169,7 +169,7 @@ namespace Samosvalllll
                     throw new FormatException();
                 }
                 line = sr.ReadLine();
-                Gruzovik car = null;
+                Vehicle car = null;
                 string key = string.Empty;
                 if (line != null && line.Contains("Parking"))
                 {
@@ -180,14 +180,14 @@ namespace Samosvalllll
 
                     }
                     else { 
-                    parkingStages.Add(key, new Parking<Gruzovik, EmblemCircle>(pictureWidth, pictureHeight));
+                    parkingStages.Add(key, new Parking<Vehicle, EmblemCircle>(pictureWidth, pictureHeight));
                     }
                     line = sr.ReadLine();
                     while (line != null && (line.Contains("Gruzovik") || line.Contains("Samosval")))
                     {
                         if (line.Split(separator)[0] == "Gruzovik")
                         {
-                            car = new Car(line.Split(separator)[1]);
+                            car = new Gruzovik(line.Split(separator)[1]);
                         }
                         else if (line.Split(separator)[0] == "Samosval")
                         {
@@ -211,7 +211,7 @@ namespace Samosvalllll
 
         public ParkingCollection(int pictureWidth, int pictureHeight)
         {
-            parkingStages = new Dictionary<string, Parking<Gruzovik, EmblemCircle>>();
+            parkingStages = new Dictionary<string, Parking<Vehicle, EmblemCircle>>();
             this.pictureWidth = pictureWidth;
             this.pictureHeight = pictureHeight;
         }
@@ -221,7 +221,7 @@ namespace Samosvalllll
             {
                 return;
             }
-            parkingStages.Add(name, new Parking<Gruzovik, EmblemCircle>(pictureWidth, pictureHeight));
+            parkingStages.Add(name, new Parking<Vehicle, EmblemCircle>(pictureWidth, pictureHeight));
         }
         public void DelParking(string name)
         {
@@ -231,7 +231,7 @@ namespace Samosvalllll
             }
         }
 
-        public Parking<Gruzovik, EmblemCircle> this[string ind]
+        public Parking<Vehicle, EmblemCircle> this[string ind]
         {
             get
             {
@@ -243,7 +243,7 @@ namespace Samosvalllll
                     return null;
             }
         }
-        public Gruzovik this[string key, int ind]
+        public Vehicle this[string key, int ind]
         {
             get
             {

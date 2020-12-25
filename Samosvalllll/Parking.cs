@@ -29,6 +29,7 @@ namespace Samosvalllll
 
         object IEnumerator.Current => _places[_currentIndex];
 
+
         public Parking(int picWidth, int picHeight)
         {
             int width = picWidth / _placeSizeWidth;
