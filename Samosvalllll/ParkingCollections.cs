@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace Samosvalllll
 {
-    class ParkingCollection 
+    class ParkingCollection
     {
         readonly Dictionary<string, Parking<Vehicle, EmblemCircle>> parkingStages;
-
         public List<string> Keys => parkingStages.Keys.ToList();
-
         private readonly int pictureWidth;
-
         private readonly int pictureHeight;
-
         public ParkingCollection(int pictureWidth, int pictureHeight)
         {
             parkingStages = new Dictionary<string, Parking<Vehicle, EmblemCircle>>();
@@ -50,7 +46,6 @@ namespace Samosvalllll
                     return null;
             }
         }
-
         public Vehicle this[string key, int ind]
         {
             get

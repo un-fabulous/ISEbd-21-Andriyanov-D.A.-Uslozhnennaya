@@ -10,7 +10,7 @@ namespace Samosvalllll
 {
     public class Parking<T, P> where T : class, ITransport where P : class, IDopElement
     {
-        private readonly List<T> _places;
+        public readonly List<T> _places;
 
         private readonly int _maxCount;
 
@@ -54,6 +54,9 @@ namespace Samosvalllll
             return car;
         }
 
+       
+
+
         public void Draw(Graphics g)
         {
             DrawMarking(g);
@@ -64,6 +67,8 @@ namespace Samosvalllll
                 _places[i].DrawTransport(g);
             }
         }
+
+
 
         private void DrawMarking(Graphics g)
         {
@@ -80,7 +85,6 @@ namespace Samosvalllll
             }
 
         }
-
         public T this[int ind]
         {
             get
@@ -91,6 +95,6 @@ namespace Samosvalllll
                 }
                 return null;
             }
-        }   
+        }
     }
 }

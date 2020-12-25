@@ -14,26 +14,63 @@ namespace Samosvalllll
         public bool Support { private set; get; }
         public bool Carcass { private set; get; }
 
-        IDopElement WheelsOrnament;
+        IDopElement wheel;
 
-        public Samosval(int maxSpeed, float weight, Color mainColor, Color dopColor, bool support, bool carcass, int numberOfWheels, int ornamentwheel) :
-        base(maxSpeed, weight, mainColor, 100, 60)
+        public int Wheels { private set; get; }
+
+        public string WheelsOrnament { private set; get; }
+
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+            if (WheelsOrnament == "EmblemCircle")
+            {
+                wheel = new EmblemCircle(Wheels, DopColor, MainColor);
+            }
+            else if (WheelsOrnament == "EmblemTriangle")
+            {
+                wheel = new EmblemTriangle(Wheels, DopColor, MainColor);
+            }
+            else if (WheelsOrnament == "EmblemRectangle")
+            {
+                wheel = new EmblemRectangle(Wheels, DopColor, MainColor);
+            }
+        }
+
+
+        public void SetWheel(IDopElement wheels)
+        {
+            wheel = wheels;
+            WheelsOrnament = wheel.GetType().Name;
+        }
+
+        public void SetWheelsNumber(int wheelNumber)
+        {
+            Wheels = wheelNumber;
+        }
+
+        public Samosval(int maxSpeed, float weight, Color mainColor, Color dopColor,
+            bool support, bool carcass, int numberOfWheels, string ornamentwheel) :
+            base(maxSpeed, weight, mainColor, 100, 60)
         {
             DopColor = dopColor;
             Support = support;
             Carcass = carcass;
+            Wheels = numberOfWheels;
+            WheelsOrnament = ornamentwheel;
 
-            if (ornamentwheel == 1)
+
+            if (WheelsOrnament == "EmblemCircle")
             {
-                WheelsOrnament = new EmblemTriangle(numberOfWheels, dopColor, mainColor);
+                wheel = new EmblemCircle(Wheels, DopColor, MainColor);
             }
-            else if (ornamentwheel == 2)
+            else if (WheelsOrnament == "EmblemTriangle")
             {
-                WheelsOrnament = new EmblemRectangle(numberOfWheels, dopColor, mainColor);
+                wheel = new EmblemTriangle(Wheels, DopColor, MainColor);
             }
-            else if (ornamentwheel == 3)
+            else if (WheelsOrnament == "EmblemRectangle")
             {
-                WheelsOrnament = new EmblemCircle(numberOfWheels, dopColor, mainColor);
+                wheel = new EmblemRectangle(Wheels, DopColor, MainColor);
             }
         }
 
@@ -43,11 +80,13 @@ namespace Samosvalllll
             DopColor = dopColor;
             Support = support;
             Carcass = carcass;
-            WheelsOrnament = new EmblemCircle(3, dopColor, mainColor);
+            wheel = new EmblemCircle(3, dopColor, mainColor);
         }
 
         public override void DrawTransport(Graphics g)
-        {    
+        {
+           
+
             if (Support)
             {
                 Brush support = new SolidBrush(DopColor);
@@ -78,7 +117,11 @@ namespace Samosvalllll
             Pen line = new Pen(MainColor, 45);
             g.DrawLine(Pens.Black, _startPosX, _startPosY + 20, _startPosX + 128, _startPosY + 20);
 
-            WheelsOrnament.DrawElement(g, DopColor, MainColor, _startPosX, _startPosY);
+            if (wheel != null)
+            { 
+            wheel.DrawElement(g, DopColor, MainColor, _startPosX, _startPosY);
+            }
         }
+        
     }
 }
